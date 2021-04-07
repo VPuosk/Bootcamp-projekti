@@ -1,6 +1,136 @@
 ﻿@{
-    ViewData["Title"] = "Oma CV";
+    ViewData["Title"] = "Curriculum Vitae";
 }
 <h1>@ViewData["Title"]</h1>
 
 <p>Tällä sivulla esittellään minun CV:tä</p>
+
+<p>Mikäli halutaan vain TLDR osuus, niin <a href="~/tiedostot/CV.pdf">tässäpä suora linkki</a> CV:n PDF versioon.</p>
+
+
+<div id="CV-kokoelma">
+    <div class="card">
+        <div class="card-header" id="otsakeEnsimmäinen">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Tarkastelua
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="otsakeEnsimmäinen" data-parent="#CV-kokoelma">
+            <div class="card-body">
+                Tekstiloota #1
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="otsakeToinen">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Muuta
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="otsakeToinen" data-parent="#CV-kokoelma">
+            <div class="card-body">
+                Tekstiloota #2
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="otsakeKolmas">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Tietotekniikan opintoja
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="otsakeKolmas" data-parent="#CV-kokoelma">
+            <div class="card-body">
+                Itsenäisesti opiskeltuna:
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Mikä kieli
+                        </div>
+                        <div class="col">
+                            Muuta
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Basic
+                        </div>
+                        <div class="col">
+                            Ensimmäiset tekemiseni koodauksen parissa Commodore 64 tietokoneella
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            C/C++
+                        </div>
+                        <div class="col">
+                            Pienten ohjelmien kirjoittamista omaan käyttöön (osittain aiempien Basic kielisten ohjelmien muuntoa C kielelle). Kyseessä oli myös FreeSpace Open pelimoottorin kieli.
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Lua
+                        </div>
+                        <div class="col">
+                            FreeSpace Open pelimoottoriin valittu skriptauskieli.
+                        </div>
+                    </div>
+                </div>
+                Helsingin Yliopiston Avoimessa Yliopistossa:
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            Kurssi
+                        </div>
+                        <div class="col">
+                            Suoritusajankohta
+                        </div>
+                        <div class="col">
+                            Ohjelmointikieli
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Elements of AI: Tekoälyn perusteet
+                        </div>
+                        <div class="col">
+                            2019
+                        </div>
+                        <div class="col">
+                            Ei ohjelmointia
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Ohjelmoinnin perusteet & jatkokurssi
+                        </div>
+                        <div class="col">
+                            2019
+                        </div>
+                        <div class="col">
+                            Java
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Data Analysis with Python
+                        </div>
+                        <div class="col">
+                            2019
+                        </div>
+                        <div class="col">
+                            Python
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
