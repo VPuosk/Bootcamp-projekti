@@ -10,17 +10,83 @@
 
 <div id="CV-kokoelma">
     <div class="card">
+        <div class="card-header" id="otsakeNolla">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+                    CV:n musta aukko
+                </button>
+            </h5>
+        </div>
+        <div id="collapseZero" class="collapse" aria-labelledby="otsakeNolla" data-parent="#CV-kokoelma">
+            <div class="card-body">
+                <p>Eli miksi CV:ssäni ja työhistoriassani on suuri musta aukko... Olin lapsena kaikilla lomillani lähestulkoon aina isoäitini hoidossa Lapissa ja siten minulla oli huomattavan läheiset suhteet häneen. Hän oli kuitenkin iäkäs ja sairastui vakavasti uuden vuosituhannen alussa. Piakkoin hän ei enää pärjännyt yksin (isoisäni oli kuollut hoitovirheen johdosta jo aiemmin) ja hänet täytyi siirtää hoitokotiin. Vain noin vuotta myöhemmin hän menehtyi. Tämä kosketti minua erittäin syvästi.</p>
+                <p>Olin tässä vaiheessa saanut maisterin opintoni yliopistossa lähes valmiiksi, ja olin jo tekemässä erikoistyötäni. Sain erikoistyöni tehdyksi ja sen selostuksen valmiiksi, mutta en siinä mielentilassa mikä minulla oli pystynyt kirjoittamaan varsinaista Pro Gradua loppuun saakka. Kirjoitin sen lähes valmiiiksi useaan otteeseen, mutta kyennyt ylittämään maaliviiva. Tavallaan gradu assosioitui isoäitini kuolemaan. En myöskään osannut pyytää apua tähän ongelmaan, jolloin yliopistolta tullut opastus ja patistus oli lähinnä enemmän haitaksi kuin hyödyksi.</p>
+                <p>Tämä jätti gradun kuin limboon. Etenkin kun tähän liittyvä erikoistyö ei varsinaisesti tuottanut toivottua tulosta - tämä tosin johtui ohjaajien oletuksista jotka eivät toteutuneet. Tällä välin opettelin itse ohjelmoimaan, tein keikkatöitä 'firaabelina' turvakameroiden asennuksessa ja tietokoneiden asentamisessa. Palasin kuitenkin aina takaisin tuohon graduun, mutta sen saaminen valmiiksi oli uskottamattoman vaikeaa. Lopulta pakotin itseni kohtaamaan tuon ja tein kaikki lopputentit ennen gradun lopullista kirjoittamista. Asian osaamisesta ei mikään ollut kiinni, lopputentit menivät läpi arvosanoilla 5/5, 5/5 ja 4/5. Gradukin valmistui lopulta nopeasti tämän jälkeen.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
         <div class="card-header" id="otsakeEnsimmäinen">
             <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Tarkastelua
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Ohjelmointia harrastuksena
                 </button>
             </h5>
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="otsakeEnsimmäinen" data-parent="#CV-kokoelma">
+        <div id="collapseOne" class="collapse" aria-labelledby="otsakeEnsimmäinen" data-parent="#CV-kokoelma">
             <div class="card-body">
-                Tekstiloota #1
+                <p>Olen osallistunut FreeSpace 2 Open pelimoottorin muokkaamiseen osana 'the Source Code Project' (myöhemmin 'SCP') projektia - pelimoottori oli alunperin FreeSpace 2 pelin pelimoottori, jonka julkaisia oli avannut vapaaseen ei-kaupalliseen levitykseen (tosin vain pelimoottorin, ei pelidataa). Aloitin pelin parissa vain pelailemalla, mutta siirryin aika nopeasti muokkaamaan pelin data (ASCII tiedostoja). Kun pyytämiäni koodimuokkauksia ei toteutettu päätin ohjelmoida kyseessä olevat kohdat itse. Tämä johdatti minut opettelemaan ohjelmointia C/C++ kielillä joilla pelimoottori oli alunperin julkaistu. SCP:ssä tapana oli, että koodiin sai luvan lisätä omia osioita, kunhan ensin korjasi tietyn määrän ilmoitettuja (Mantis-alustalla) bugeja. Lisäksi kaiken uuden ohjelmakoodin tuli olla 100% taakesepäin yhteensopivaa.</p>
+                <p>Tämä prosessi tutustutti minut varsin monipuolisesti toimintaan koodin, ohjelmoijien, datan, modaajien, sekä varsinaisten pelaajien välillä. Raportoidut virheet vaihtelivat kaikesta pelaajan omasta tekemisestä aina pelimoottorin keskeisiin osiin saakka (esim. liukulukulaskennan epätarkkuuteen pelimaailman 'ulkorajoilla'). Kävin läpi kaikenlaista pelin varsinaisen logiikan puolella, mutta en juurikaan koskenut grafiikkamoottoriin tai suoraan käyttöjärjestelmäintegraatioon (peli oli alunperin vain Windows pohjainen, mutta muokattiin myös Linux ja Mac yhteensopivaksi SCP projektissa).</p>
+                <p>Omat muokkaukseni keskittyivät irroittamaan 'kovakoodattuja' ominaisuuksia irti C/C++ koodista ja antamaan nämä modaajien saataville ns. table tiedostojen kautta muokattavaksi. Lisäsin myös paljon toivottuja ominaisuuksia peliin, ja käsittelin paljon etenkin pelin alusten tekoälyn käyttämiä ominaisuuksia, ja muokkasin myös tekoälyn toimintaa. Lua-skriptauskielen tultua integroiduksi koitin edistää sen käyttöä tuottamalla joitain muokkaajien ja bugin etsintä työkaluja, mutta rakensin myös Lua-parserin, parannetun hiirikontrollin (peli oli suunniteltu joystickille) ja käytin skriptausta efektien lisäämiseen peliin.</p>
+                <p>Merkittävimmät muokkaukset tai totaalikonversiot joihin otin osaa. Autoin myös ratkaisemaan lukuisittain muiden modaajien ja muokkausten ongelmia ja bugeja.</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            Muokkaus tai konversio:
+                        </div>
+                        <div class="col-3">
+                            Pohjautuu:
+                        </div>
+                        <div class="col-5">
+                            Linkki & Muuta;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Diaspora: Shattered Armistice
+                        </div>
+                        <div class="col-3">
+                            Battlestar Galactica (tv-sarja v. 2004-)
+                        </div>
+                        <div class="col-5">
+                            <a href="https://diaspora.hard-light.net/index.html">Projektin kotisivu</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            The Babylon Project
+                        </div>
+                        <div class="col-3">
+                            Babylon 5 (tv-sarja v. 1993-)
+                        </div>
+                        <div class="col-5">
+                            <a href="https://babylon.hard-light.net/">Projektin kotisivu</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            Wing Commander Saga
+                        </div>
+                        <div class="col-3">
+                            Wing Commander (pelisarja, etenkin Wing Commander III)
+                        </div>
+                        <div class="col-5">
+                            <a href="https://www.wcsaga.com/">Projektin kotisivu</a>
+                        </div>
+                    </div>
+                </div>
+                <p>Olen myös ohjelmoinut pieniä paikallisia ohjelmia omaan käyttöön. Koska harrastin aiemmin roolipelaamista (ei livenä) ja etenkin siihen liittyvää maailmanrakentamista niin rakensin itselleni työkaluja helpottamaan tätä prosessia. En kuitenkaan voi laittaa niitä ohjelmia tänne, sillä ymmärtääkseni pelien säännöt ovat kopiointisuojattuja, mikä koskee myös suoraan niistä tehtäviä johdannaisia, kuten tietokoneohjelmia - eli ne ovat vain omaan käyttöön. Näitä olivat esimerkiksi maailmageneraattori (perusteen <i>GURPS: Space</i> teokseen), aurinkokuntageneraattori (useita erilaisia, perustuen <i>Traveller: The New Era</i>, <i>GURPS: Traveller</i> ja, <i>GURPS: Space</i> teoksiin).</p>
             </div>
         </div>
     </div>
@@ -51,34 +117,34 @@
                 Itsenäisesti opiskeltuna:
                 <div class="container">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-2">
                             Mikä kieli
                         </div>
-                        <div class="col">
+                        <div class="col-10">
                             Muuta
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-2">
                             Basic
                         </div>
-                        <div class="col">
+                        <div class="col-10">
                             Ensimmäiset tekemiseni koodauksen parissa Commodore 64 tietokoneella
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-2">
                             C/C++
                         </div>
-                        <div class="col">
+                        <div class="col-10">
                             Pienten ohjelmien kirjoittamista omaan käyttöön (osittain aiempien Basic kielisten ohjelmien muuntoa C kielelle). Kyseessä oli myös FreeSpace Open pelimoottorin kieli.
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-2">
                             Lua
                         </div>
-                        <div class="col">
+                        <div class="col-10">
                             FreeSpace Open pelimoottoriin valittu skriptauskieli.
                         </div>
                     </div>
@@ -86,24 +152,24 @@
                 Helsingin Yliopiston Avoimessa Yliopistossa:
                 <div class="container">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-4">
                             Kurssi
                         </div>
-                        <div class="col">
+                        <div class="col-3">
                             Suoritusajankohta
                         </div>
-                        <div class="col">
+                        <div class="col-5">
                             Ohjelmointikieli
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-4">
                             Elements of AI: Tekoälyn perusteet
                         </div>
-                        <div class="col">
+                        <div class="col-3">
                             2019
                         </div>
-                        <div class="col">
+                        <div class="col-5">
                             Ei ohjelmointia
                         </div>
                     </div>
