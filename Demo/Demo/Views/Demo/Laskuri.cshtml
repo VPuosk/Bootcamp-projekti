@@ -1,0 +1,16 @@
+﻿@model Demo.Models.Arvopari
+
+@{
+    ViewData["Title"] = "Laskin";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Laskuri" asp-controller="Demo">
+    <label asp-for="A">Ensimmäinen luku</label>
+    <input asp-for="A" placeholder="Arvo" />
+    <label asp-for="B">Toinen luku</label>
+    <input asp-for="B" placeholder="Arvo" />
+    <input type="submit" />
+</form>
+
+<p>Tulos: @ViewData["laskuri"]</p>
