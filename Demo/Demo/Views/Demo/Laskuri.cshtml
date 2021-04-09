@@ -5,12 +5,66 @@
 }
 <h1>@ViewData["Title"]</h1>
 
+<h4>Laskuri käyttäen C# kieltä</h4>
+
 <form asp-action="Laskuri" asp-controller="Demo">
     <label asp-for="A">Ensimmäinen luku</label>
     <input asp-for="A" placeholder="Arvo" />
     <label asp-for="B">Toinen luku</label>
     <input asp-for="B" placeholder="Arvo" />
+
+    @Html.DropDownListFor(m => m.Toiminto, new SelectList(Enum.GetValues(typeof(Laskutoimitus))), "Laskutoimitus")
+
     <input type="submit" />
 </form>
 
 <p>Tulos: @ViewData["laskuri"]</p>
+
+<h4>Laskuri käyttäen JavaScript kieltä</h4>
+
+<div class="container w-50">
+    <div class="btn-group-vertical w-100">
+        <div class="btn-group" role="group">
+            <p id="vanhatulosruutu" class="border border-primary mb-0 w-75 pt-2 pb-2 text-center">&nbsp;</p>
+            <p id="operaattori" class="border border-primary mb-0 w-25 pt-2 pb-2 text-center">&nbsp;</p>
+        </div>
+        <div class="btn-group" role="group"> 
+            <p id="tulosruutu" class="border border-primary mb-0 w-75 pt-2 pb-2 text-center">&nbsp;</p>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="NollaaLaskuri()">CE</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">1</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">2</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">3</button>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="VaihdaOperaattoria()">+</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">4</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">5</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">6</button>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="VaihdaOperaattoria()">-</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">7</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">8</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">9</button>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="VaihdaOperaattoria()">*</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary w-25" onclick="PisteenLisays()">.</button>
+            <button type="button" class="btn btn-outline-primary w-25" onclick="LisaaLukuun()">0</button>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="VaihdaOperaattoria()">/</button>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="VaihdaOperaattoria()">%</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="MerkinVaihto()">+/-</button>
+            <button type="button" class="btn btn-secondary w-50" onclick="LaskeLasku()">Laske</button>
+            <button type="button" class="btn btn-outline-secondary w-25" onclick="PoistaLuku()">DEL</button>
+        </div>
+    </div>
+</div>
+
+<h4>Rivilaskin käyttäen C#</h4>
+<p>Sallittuja merkkejä ovat kaikki numerot, sekä +, -, *, /, ( ja )</p>
+
+<script src="~/js/Laskutoimitus.js"></script>

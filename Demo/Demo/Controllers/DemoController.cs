@@ -25,9 +25,9 @@ namespace Demo.Controllers
         [HttpPost]
         public IActionResult Laskuri(Models.Arvopari arvopari)
         {
-            Console.WriteLine(arvopari.A);
-            Console.WriteLine(arvopari.B);
-            ViewData["laskuri"] = arvopari.Summa();
+            //Console.WriteLine(arvopari.A);
+            //Console.WriteLine(arvopari.B);
+            ViewData["laskuri"] = arvopari.Laske();
             return View();
         }
     }
