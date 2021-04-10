@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var kontrollerinNimi = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,6 +10,7 @@
     <title>@ViewData["Title"] - Demo</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/sivupalkki.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -18,22 +23,49 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <!-- Luodaan navigointi kontrollorien välillä tänne-->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Aloitussivu</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Pääsivut</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CVsivu">CV</a>
+                            <a class="nav-link text-dark pr-4 border-right" asp-area="" asp-controller="Demo" asp-action="Index">Koodaussivut</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link text-dark" onclick="avaaSivupalkki()">Avaa sivupalkki</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!-- sivupalkki renderöinti-->
+    <div id="sivuPalkki" class="sivupalkki">
+        <button class="closebtn" onclick="suljeSivupalkki()">&times;</button>
+        <!-- Luodaan kontrolleri pohjainen navigointipalkki tänne-->
+        @{
+            if (kontrollerinNimi == "Demo")
+            {
+                <a asp-area="" asp-controller="Demo" asp-action="Index">Koodauksen etusivu</a>
+                <a asp-area="" asp-controller="Demo" asp-action="Laskuri">Laskimia</a>
+            }
+            else 
+            {
+                // oletusarvona on aloitussivu
+                <a asp-area="" asp-controller="Home" asp-action="Index">Etusivu</a>
+                <a asp-area="" asp-controller="Home" asp-action="CVsivu">CV</a>
+            }
+        }
+    </div>
+    <!-- sivupalkin rendaus ohi -->
+    
+    <!-- sivun renderöinti-->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    <!-- sivun rendaus ohi-->
 
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -43,6 +75,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sivupalkki.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
