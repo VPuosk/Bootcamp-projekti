@@ -8,6 +8,7 @@ namespace Demo.Controllers
 {
     public class DemoController : Controller
     {
+
         public IActionResult Index()
         {
             ViewData["laskuri"] = 20;
@@ -18,6 +19,7 @@ namespace Demo.Controllers
         public IActionResult Laskuri()
         {
             //ViewData["laskuri"] = 20;
+            ViewData["rivilasku"] = TempData["rivilasku"];
             return View();
         }
 
@@ -25,10 +27,19 @@ namespace Demo.Controllers
         [HttpPost]
         public IActionResult Laskuri(Models.Arvopari arvopari)
         {
-            //Console.WriteLine(arvopari.A);
-            //Console.WriteLine(arvopari.B);
             ViewData["laskuri"] = arvopari.Laske();
             return View();
+        }
+
+        //POST
+        [HttpPost]
+        public IActionResult Rivilaskuri(string syöte)
+        {
+            Models.Rivilaskuri rivilaskuri = new();
+            Console.WriteLine(syöte);
+            rivilaskuri.Jono = syöte;
+            TempData["rivilasku"] = rivilaskuri.LaskeMerkkiJono();
+            return RedirectToAction("Laskuri", "Demo");
         }
     }
 }

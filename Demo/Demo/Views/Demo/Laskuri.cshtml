@@ -65,6 +65,14 @@
 </div>
 
 <h4>Rivilaskin käyttäen C#</h4>
-<p>Sallittuja merkkejä ovat kaikki numerot, sekä +, -, *, /, ( ja )</p>
+<p>Sallittuja merkkejä ovat kaikki numerot, sekä +, -, * ja /. Desimaalierotin voi olla joko piste tai pilkku. Jokainen numero tai merkki on erotettava välilyönnillä, eli 2 + -123 on OK, mutta 2*2, ei ole.</p>
+
+<form asp-action="Rivilaskuri" asp-controller="Demo">
+    <label for="syöte">Anna laskettava lauseke:</label><br>
+    <input type="text" id="syöte" name="syöte"><br>
+    <input type="submit" />
+</form>
+
+<p>Tulos: @ViewData["rivilasku"]</p>
 
 <script src="~/js/Laskutoimitus.js"></script>
