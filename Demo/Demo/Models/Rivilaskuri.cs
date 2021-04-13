@@ -11,7 +11,7 @@ namespace Demo.Models
 
         private Stack<double> LaskuPakka;
         private Stack<string> Operaattorit;
-        public string VirheIlmoitus;
+        private string VirheIlmoitus;
         private string[] Merkkijonot;
         private Dictionary<string, int> Prioriteetit;
         
@@ -30,6 +30,8 @@ namespace Demo.Models
             Prioriteetit.Add("/", 2);
             Prioriteetit.Add("+", 1);
             Prioriteetit.Add("-", 1);
+            Prioriteetit.Add("(", 0);
+            Prioriteetit.Add(")", 0);
             Prioriteetit.Add("lopetus", 0);
         }
 
@@ -46,23 +48,28 @@ namespace Demo.Models
             };
         }
 
+        private int HaeNykyinenPrioriteetti()
+        {
+            if (Operaattorit.Count > 0)
+            {
+                return Prioriteetit[Operaattorit.Peek()];
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         private void Laske()
         {
             double eka;
             double toka;
-            string toiminto = "";
-            int nykyinenPrioriteetti = 0;
+            string toiminto;
+            int nykyinenPrioriteetti;
 
             foreach (var merkkijono in Merkkijonot)
             {
-                if (Operaattorit.Count > 0)
-                {
-                    nykyinenPrioriteetti = Prioriteetit[Operaattorit.Peek()];
-                }
-                else
-                {
-                    nykyinenPrioriteetti = 0;
-                }
+                nykyinenPrioriteetti = HaeNykyinenPrioriteetti();
 
                 switch (merkkijono)
                 {
@@ -70,6 +77,7 @@ namespace Demo.Models
                     case ("/"):
                     case ("+"):
                     case ("-"):
+                    case (")"):
                     
                         // havaittu operaattori
                         int uusiPrioriteetti = Prioriteetit[merkkijono];
@@ -89,33 +97,46 @@ namespace Demo.Models
                                 eka = LaskuPakka.Pop();
                                 
                                 LaskuPakka.Push(this.SuoritaLasku(eka, toka, toiminto));
-                                if (Operaattorit.Count > 0)
-                                {
-                                    nykyinenPrioriteetti = Prioriteetit[Operaattorit.Peek()];
-                                }
-                                else
-                                {
-                                    nykyinenPrioriteetti = 0;
-                                }
+
+                                nykyinenPrioriteetti = HaeNykyinenPrioriteetti();
                             }
                             catch (Exception)
                             {
-                                VirheIlmoitus = "Virhe tulkittaessa operaattoria";
+                                VirheIlmoitus = "Virhe prosessoitaessa laskua";
                                 break;
                             }
+                        }
+
+                        if (merkkijono == ")" && Operaattorit.Peek() =="(")
+                        {
+                            // varmistetaan, ettei ')' lisätä ja '(' poistetaan
+                            Operaattorit.Pop();
+                            break;
                         }
 
                         // lisätään uusi operaattori listalle
                         Operaattorit.Push(merkkijono);
                         break;
+
+                    case ("("):
+                        Operaattorit.Push(merkkijono);
+                        break;
                     case ("lopetus"):
                         while (LaskuPakka.Count > 1)
                         {
-                            toiminto = Operaattorit.Pop();
-                            toka = LaskuPakka.Pop();
-                            eka = LaskuPakka.Pop();
+                            try
+                            {
+                                toiminto = Operaattorit.Pop();
+                                toka = LaskuPakka.Pop();
+                                eka = LaskuPakka.Pop();
 
-                            LaskuPakka.Push(this.SuoritaLasku(eka, toka, toiminto));
+                                LaskuPakka.Push(this.SuoritaLasku(eka, toka, toiminto));
+                            }
+                            catch (Exception)
+                            {
+                                VirheIlmoitus = "Virhe prosessoitaessa laskua";
+                                break;
+                            }
                         }
                         break;
                     default:
@@ -135,6 +156,33 @@ namespace Demo.Models
             }
         }
 
+        private void TarkistetaanSulkeet()
+        {
+            int sulkeidenMäärä = 0;
+
+            for (int i = 0; i < Merkkijonot.Length; i++)
+            {
+                if (Merkkijonot[i] == "(")
+                {
+                    sulkeidenMäärä++;
+                }
+                else if (Merkkijonot[i] == ")")
+                {
+                    sulkeidenMäärä--;
+                }
+
+                if (sulkeidenMäärä < 0)
+                {
+                    VirheIlmoitus = "Virhe sulkujen käytössä.";
+                }
+            }
+
+            if (sulkeidenMäärä != 0)
+            {
+                VirheIlmoitus = "Virheellinen määrä sulkeita";
+            }
+        }
+
         public string LaskeMerkkiJono()
         {
             // varmista, ettei merkkijono sisällä ennenaikaista lopetusmerkkiä
@@ -151,6 +199,15 @@ namespace Demo.Models
 
             // nollataan rakenteet
             this.AlustaRakenteet();
+
+            // tarkistetaan sulkeet
+            this.TarkistetaanSulkeet();
+
+            // jos on havaittu virheitä, ei lasketa, vaan palautetaan
+            if (VirheIlmoitus != "")
+            {
+                return VirheIlmoitus;
+            }
 
             // lasketaan lasku
             this.Laske();
