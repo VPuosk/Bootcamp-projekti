@@ -1,6 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Demonstraatioita";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Laskuri antaa arvoksi: @ViewData["laskuri"]</p>
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <div>
+        <p><a asp-area="" asp-controller="Demo" asp-action="Laskuri">Laskimia</a></p>
+        <p><a asp-area="" asp-controller="Demo" asp-action="Reitinhaku">Reitinhaku</a></p>
+    </div>    
+</div>
+

@@ -11,7 +11,6 @@ namespace Demo.Controllers
 
         public IActionResult Index()
         {
-            ViewData["laskuri"] = 20;
             return View();
         }
 
@@ -21,6 +20,21 @@ namespace Demo.Controllers
             //ViewData["laskuri"] = 20;
             ViewData["rivilasku"] = TempData["rivilasku"];
             return View();
+        }
+
+        //GET
+        public IActionResult Reitinhaku()
+        {
+            //Session
+            return View();
+        }
+
+        //POST
+        [HttpPost]
+        public IActionResult ReitinhaunSyöte(string alku, string loppu, string etäisyys)
+        {
+            Console.WriteLine(alku + ", " + loppu + ", " + etäisyys);
+            return RedirectToAction("Reitinhaku", "Demo");
         }
 
         //POST

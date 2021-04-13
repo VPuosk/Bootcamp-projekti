@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Reitinhaku";
+}
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="ReitinhaunSyöte" asp-controller="Demo">
+    <label for="alku">Alkupiste</label>
+    <input for="alku" placeholder="Arvo" />
+    <label for="loppu">Loppupiste</label>
+    <input for="loppu" placeholder="Arvo" />
+    <label for="etäisyys">Etäisyys</label>
+    <input for="etäisyys" placeholder="Arvo" />
+    <input type="submit" />
+</form>
