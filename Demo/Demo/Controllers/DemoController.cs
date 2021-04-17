@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Demo.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,14 +27,18 @@ namespace Demo.Controllers
         public IActionResult Reitinhaku()
         {
             //Session
+            ViewData["Tulos"] = TempData["ReitinhakuTulos"];
             return View();
         }
 
         //POST
         [HttpPost]
-        public IActionResult ReitinhaunSyöte(string alku, string loppu, string etäisyys)
+        public IActionResult ReitinhaunSyöte(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)
         {
-            Console.WriteLine(alku + ", " + loppu + ", " + etäisyys);
+            Reitinhaku reitinhaku = new();
+            string tulos = reitinhaku.SuoritaHaku(alku, loppu, muoto, tulostus, kaaret, toiminto);
+            TempData["ReitinhakuTulos"] = tulos;
+            Console.WriteLine(tulos);
             return RedirectToAction("Reitinhaku", "Demo");
         }
 

@@ -4,11 +4,50 @@
 <h1>@ViewData["Title"]</h1>
 
 <form asp-action="ReitinhaunSyöte" asp-controller="Demo">
-    <label for="alku">Alkupiste</label>
-    <input for="alku" placeholder="Arvo" />
-    <label for="loppu">Loppupiste</label>
-    <input for="loppu" placeholder="Arvo" />
-    <label for="etäisyys">Etäisyys</label>
-    <input for="etäisyys" placeholder="Arvo" />
+    <div>
+        <label for="alku">Alkupisteen nimi tai määrite: </label>
+        <input for="alku" name="alku" placeholder="Alkupiste" required/>
+    </div>
+    <div>
+        <label for="loppu">Loppupisteen nimi tai määrite: </label>
+        <input for="loppu" name="loppu" placeholder="Loppupiste" />
+    </div>
+    <label for="muoto">Valitse kaari tiedon muoto:</label>
+    <select id="muoto" name="muoto">
+        <option value="oletus">Painottamaton & suuntaamaton</option>
+        <option value="painotettu">Painotettu & suuntaamaton</option>
+        <option value="suunnattu">Painottamaton & suunnattu</option>
+        <option value="molemmat">Painotettu ja suunnattu</option>
+    </select><br />
+    <label for="tulostus">Valitse tulostuksen muoto:</label>
+    <select id="tulostus" name="tulostus">
+        <option value="normaali">Normaali</option>
+        <option value="laajennettu">Laajennettu</option>
+    </select>
+    <p>Ohje: Kaaritiedon tulee olla muodossa: 'alku' 'loppu' 'paino'</p>
+    <p>Esimerkki: Pisteet A ja B yhdistävä painoltaan 5 oleva kaari olisi <pre>A B 5</pre></p>
+    <label for="kaaret">Kaaret:</label>
+    <p>
+        <textarea for="kaaret" name="kaaret" rows="10">A B 5</textarea>
+    </p>
+    Valitse haun tyyppi:<br>
+    <label>
+        <input type="radio" name="toiminto" value="syvyys" required>    Syvyyshaku
+    </label><br>
+    <label>
+        <input type="radio" name="toiminto" value="leveys">    Leveyshaku
+    </label><br>
+    <label>
+        <input type="radio" name="toiminto" value="djikstra">    Djikstra:n algoritmi
+    </label><br>
+    <label>
+        <input type="radio" name="toiminto" value="maksimivirtaus">    Maksimivirtaus
+    </label><br>
+    <label>
+        <input type="radio" name="toiminto" value="rakenne">    Verkon rakenne
+    </label><br>
     <input type="submit" />
+    <input type="reset" />
 </form>
+
+<div>Tulos: @ViewData["Tulos"]</div>
