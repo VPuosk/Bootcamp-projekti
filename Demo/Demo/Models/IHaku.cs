@@ -8,6 +8,6 @@ namespace Demo.Models
     public interface IHaku
     {
         public void Suorita();
-        public string Tulosta();
+        public List<string> Tulosta();
     }
 }

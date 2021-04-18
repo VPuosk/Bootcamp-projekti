@@ -7,9 +7,14 @@ namespace Demo.Models
 {
     public class Reitinhaku
     {
+        public Reitinhaku()
+        {
+            Palautus = new();
+        }
+
         // tänne rakennetaan palautusjärjestelmä pyydetylle tiedolle
         public Hakumenetelmä HakuMenetelmä { get; set; }
-        public string Palautus { get; set; }
+        public List<string> Palautus { get; set; }
 
         private void LueKaariLista(string kaariTiedot, Hakutyyppi tyyppi)
         {
@@ -27,7 +32,7 @@ namespace Demo.Models
                 // jos annetaan tyhjä rivi, niin oletetaan loppuneeksi.
                 if (tiedot.Length != 3)
                 {
-                    Palautus = $"Virheellinen syöte: {tiedot}";
+                    Palautus.Add($"Virheellinen syöte: {tiedot}");
                     return;
                 }
 
@@ -47,14 +52,14 @@ namespace Demo.Models
                 }
                 catch (Exception)
                 {
-                    Palautus = $"Virheellinen syöte: {tiedot}";
+                    Palautus.Add($"Virheellinen syöte: {tiedot}");
                     return;
                 }
             }
         }
 
         // ensimmäinen kutsufunktio - datan validointi tapahtuu täällä
-        public string SuoritaHaku(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)
+        public List<string> SuoritaHaku(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)
         {
 
             // valitaan toiminto
@@ -76,7 +81,8 @@ namespace Demo.Models
                     break;
                 default:
                     // tämä loppui sitten tähän
-                    return "Virheellinen toiminto. Toiminto tulee valita ennen jatkamista.";
+                    Palautus.Add("Virheellinen toiminto. Toiminto tulee valita ennen jatkamista.");
+                    return Palautus;
             }
 
             // alettaan täyttää tietokenttiä
@@ -87,11 +93,19 @@ namespace Demo.Models
             HakuMenetelmä.LisääUusiSolmu(loppu);
 
             // varmistetaan ettei alku ja loppupiste ole sama.
-            if (alku == loppu) return "Virheellinen tieto syötetty. Alkupiste ja loppupiste eivät voi olla sama piste.";
+            if (alku == loppu)
+            {
+                Palautus.Add("Virheellinen tieto syötetty. Alkupiste ja loppupiste eivät voi olla sama piste.");
+                return Palautus;
+            }
 
             // varmistetaan ettei hakua voi tapahtua ilman loppusolmua
-            if ((toiminto == "rakenne") && (loppu == "")) return "Virheellinen tieto syötetty. Loppupiste on määritettävä.";
-            
+            if ((toiminto == "rakenne") && (loppu == ""))
+            {
+                Palautus.Add("Virheellinen tieto syötetty. Loppupiste on määritettävä.");
+                return Palautus;
+            }
+
             Hakutyyppi hakutyyppi;
 
             switch (muoto)
@@ -110,7 +124,8 @@ namespace Demo.Models
                     break;
                 default:
                     // loppuu tähän jos ei mikään aiemmista toimi
-                    return "Virheellinen tiedon muoto.";
+                    Palautus.Add("Virheellinen tiedon muoto.");
+                    return Palautus;
             }
 
             // Tiedon tuloksen muoto
@@ -120,7 +135,7 @@ namespace Demo.Models
             LueKaariLista(kaaret, hakutyyppi);
 
             // jos virheitä on havaittu, lopeta suoritus.
-            if (Palautus != null) return Palautus;
+            if (Palautus.Count != 0) return Palautus;
                 
             HakuMenetelmä.Suorita();
 

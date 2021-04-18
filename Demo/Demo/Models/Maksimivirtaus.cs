@@ -114,8 +114,6 @@ namespace Demo.Models
         // pienintä virtausta haettaessa.
         public void VähennäVirtaustaReitillä(int vähennys)
         {
-            StringBuilder sb = new("Virtaus: " + vähennys + ": ");
-
             Solmu solmu = Solmulista[Solmusetti[LoppuSolmu]];
 
             while (solmu.Edeltäjä != null)
@@ -124,10 +122,12 @@ namespace Demo.Models
                 kaari.Paino -= vähennys;
                 kaari.VastaKaari.Paino += vähennys;
                 solmu = Solmulista[kaari.Alku];
-                sb.Append(solmu.Nimi + ", ");
             }
 
-            System.Console.WriteLine(sb.ToString());
+            if (RunsasTulostus)
+            {
+                Tuloste.Add($"{TulostaHaku()}, reitin virtaus: {vähennys}");
+            }
         }
 
         public override void Suorita()
@@ -159,9 +159,10 @@ namespace Demo.Models
             }
         }
 
-        public override string Tulosta()
+        public override List<string> Tulosta()
         {
-            return "Maksimivirtaus: " + MaksimiVirtaus;
+            Tuloste.Add($"Maksimivirtaus: {MaksimiVirtaus}");
+            return Tuloste;
         }
     }
 }

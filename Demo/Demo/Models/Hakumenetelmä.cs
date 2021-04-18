@@ -23,6 +23,7 @@ namespace Demo.Models
         public int SolmujenMäärä { get; set; }
         public bool HakuTullutValmiiksi { get; set; }
         public bool RunsasTulostus { get; set; }
+        public List<string> Tuloste { get; set; }
 
         public void AlustaHakuYleisesti()
         {
@@ -31,6 +32,7 @@ namespace Demo.Models
             SolmujenMäärä = 0;
             HakuTullutValmiiksi = false;
             RunsasTulostus = false;
+            Tuloste = new();
         }
 
         public virtual void Suorita()
@@ -38,10 +40,10 @@ namespace Demo.Models
             // vain templaattipohja
         }
 
-        public virtual string Tulosta()
+        public virtual List<string> Tulosta()
         {
             // vain templaattipohja
-            return "";
+            return Tuloste;
         }
 
         public void LisääUusiSolmu(string solmunNimi)
@@ -100,14 +102,29 @@ namespace Demo.Models
             }
 
             Solmu solmu = Solmulista[Solmusetti[LoppuSolmu]];
+            List<Solmu> tulosteLista = new();
             StringBuilder tuloste = new();
 
-            do
+            // luodaan kuljetun polun reitti loppusolmusta alkusolmuun
+            while (solmu.Edeltäjä != null)
             {
-                tuloste.Append(solmu);
-                if (solmu.Edeltäjä.Alku < 0) break;
+                tulosteLista.Add(solmu);
                 solmu = Solmulista[solmu.Edeltäjä.Alku];
-            } while (solmu.Edeltäjä != null);
+            }
+
+            // lisätään aloitussolmu (jolla siis edeltäjä on aina 'null'
+            tulosteLista.Add(Solmulista[Solmusetti[AlkuSolmu]]);
+
+            // tulostetaan kuljetun polun reitti alkusolmusta loppusolmuun
+            for (int i = tulosteLista.Count - 1; i >= 0; i--)
+            {
+                tuloste.Append(tulosteLista[i].Nimi);
+                
+                if (i > 0)
+                {
+                    tuloste.Append(" -> \n");
+                }
+            }
 
             return tuloste.ToString();
         }

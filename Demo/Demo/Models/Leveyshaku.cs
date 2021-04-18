@@ -67,9 +67,10 @@ namespace Demo.Models
             }
         }
 
-        public override string Tulosta()
+        public override List<string> Tulosta()
         {
-            return TulostaHaku();
+            Tuloste.Add(TulostaHaku());
+            return Tuloste;
         }
     }
 }

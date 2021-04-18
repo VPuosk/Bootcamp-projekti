@@ -27,7 +27,13 @@ namespace Demo.Controllers
         public IActionResult Reitinhaku()
         {
             //Session
-            ViewData["Tulos"] = TempData["ReitinhakuTulos"];
+            string[] tulostettavaTieto = (string[]) TempData["ReitinhakuTulos"];
+            // varotaan null pointer ongelmaa
+            if (tulostettavaTieto == null)
+            {
+                tulostettavaTieto = System.Array.Empty<string>();
+            }
+            ViewData["Tulos"] = tulostettavaTieto;
             return View();
         }
 
@@ -36,9 +42,8 @@ namespace Demo.Controllers
         public IActionResult ReitinhaunSyöte(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)
         {
             Reitinhaku reitinhaku = new();
-            string tulos = reitinhaku.SuoritaHaku(alku, loppu, muoto, tulostus, kaaret, toiminto);
-            TempData["ReitinhakuTulos"] = tulos;
-            Console.WriteLine(tulos);
+            List<string> tulos = reitinhaku.SuoritaHaku(alku, loppu, muoto, tulostus, kaaret, toiminto);
+            TempData["ReitinhakuTulos"] = tulos.ToArray();
             return RedirectToAction("Reitinhaku", "Demo");
         }
 

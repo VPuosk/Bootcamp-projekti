@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Reitinhaku";
+    string[] tulokset = (string[]) ViewData["Tulos"];
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -50,4 +51,11 @@
     <input type="reset" />
 </form>
 
-<div>Tulos: @ViewData["Tulos"]</div>
+<div>Tulos:
+    <ul>
+        @foreach (string rivi in tulokset)
+            {
+                <li>@rivi</li>
+            }
+    </ul>    
+</div>
