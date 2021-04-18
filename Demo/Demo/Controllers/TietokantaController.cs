@@ -16,5 +16,19 @@ namespace Demo.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        [Route("Reseptit")]
+        public IActionResult Reseptisivu()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("Reseptit/Lisää")]
+        public IActionResult LisääResepti()
+        {
+            return RedirectToAction("Tietokanta", "Reseptit");
+        }
     }
 }
