@@ -1,0 +1,10 @@
+﻿Yleiset ohjeet miten tämä tehtiin:
+
+Nuget-paketit:
+
+1. Microsoft.EntityFrameworkCore
+2. Microsoft.EntityFrameworkCore.Tools
+3. Microsoft.EntityFrameworkCore.SqlServer
+
+Varsinainen paketti-managerin (PMC) käsky:
+Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=Demoprojekti;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
