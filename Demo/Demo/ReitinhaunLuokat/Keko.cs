@@ -116,7 +116,7 @@ namespace Demo.ReitinhaunLuokat
             JärjestäKekoYlhäältä(JärjestäKekoAlhaalta(PuunKoko));
         }
 
-        public int JärjestäKekoAlhaalta(int indeksi)
+        private int JärjestäKekoAlhaalta(int indeksi)
         {
             // jos ollaan jo alkukohdassa, lopetetaan
             if (indeksi == 1) return 1;
@@ -135,7 +135,7 @@ namespace Demo.ReitinhaunLuokat
             return indeksi;
         }
 
-        public void VaihdaAlkiot(int n, int m)
+        private void VaihdaAlkiot(int n, int m)
         {
             // System.Console.WriteLine($"Vaihdetaan alkiot: {n} ({Taulukko[n].Vertailija}) ja {m} ({Taulukko[m].Vertailija})");
             KekoVertailija temp = Taulukko[n];
@@ -143,7 +143,7 @@ namespace Demo.ReitinhaunLuokat
             Taulukko[m] = temp;
         }
 
-        public void JärjestäKekoYlhäältä(int indeksi)
+        private void JärjestäKekoYlhäältä(int indeksi)
         {
             int ensimmäinen = indeksi * 2;
             int toinen = ensimmäinen + 1;

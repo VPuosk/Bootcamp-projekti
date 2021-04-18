@@ -21,7 +21,7 @@ namespace Demo.ReitinhaunLuokat
 
         // koska tämä rutiini pitää käydä läpi useita kertoja,
         // niin tätä funktiota tarvitaan alustamaan haku uudelleen
-        public void NollaaVieraillut()
+        private void NollaaVieraillut()
         {
             foreach (Solmu solmu in Solmulista)
             {
@@ -29,7 +29,7 @@ namespace Demo.ReitinhaunLuokat
             }
         }
 
-        public void AlustaHakuKierros()
+        private void AlustaHakuKierros()
         {
             // varmisteluja
             NollaaVieraillut();
@@ -48,7 +48,7 @@ namespace Demo.ReitinhaunLuokat
 
         }
 
-        public void TeeHakuKierros()
+        private void TeeHakuKierros()
         {
             int seuraavaIndeksi;
             int käsiteltäväIndeksi;
@@ -90,7 +90,7 @@ namespace Demo.ReitinhaunLuokat
         // Käydään läpi reitti 'takaperin' loppusolmusta
         // koska haku muodostaa spesifisen kaari polun, saadaan
         // näin reitti käytyä läpi.
-        public int EtsiPieninVirtausReitillä()
+        private int EtsiPieninVirtausReitillä()
         {
             Solmu solmu = Solmulista[Solmusetti[LoppuSolmu]];
             int alhaisinVirtaus = int.MaxValue;
@@ -112,7 +112,7 @@ namespace Demo.ReitinhaunLuokat
         // Jotta saadaan virtausta vähennettyä reitillä.
         // Toistetaan sama polkukäsittely kuin mitä tehtiin
         // pienintä virtausta haettaessa.
-        public void VähennäVirtaustaReitillä(int vähennys)
+        private void VähennäVirtaustaReitillä(int vähennys)
         {
             Solmu solmu = Solmulista[Solmusetti[LoppuSolmu]];
 

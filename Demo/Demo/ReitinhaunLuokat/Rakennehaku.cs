@@ -9,12 +9,12 @@ namespace Demo.ReitinhaunLuokat
     // käytännössä kopio syvyyshausta, mutta sillä erotuksella, että tämä hakua koluaa koko puun.
     public class Rakennehaku : Hakumenetelmä, IHaku
     {
-        public StringBuilder sb { get; set; }
+        public StringBuilder TulostusMerkkijono { get; set; }
 
         public Rakennehaku()
         {
             AlustaHakuYleisesti();
-            sb = new();
+            TulostusMerkkijono = new();
         }
 
         public override void Suorita()
@@ -22,21 +22,21 @@ namespace Demo.ReitinhaunLuokat
             Solmu solmu = Solmulista[Solmusetti[AlkuSolmu]];
             solmu.Vierailtu = false;
             solmu.KokonaisPaino = 0;
-            sb.Clear();
-            sb.Append($"{solmu.Nimi} - ");
+            TulostusMerkkijono.Clear();
+            TulostusMerkkijono.Append($"{solmu.Nimi} - ");
             foreach (Kaari kaari in solmu.Kaaret)
             {
                 if (kaari.Paino > 0)
                 {
                     TeeSyvyysHaku(kaari);
-                    sb.Append($"{solmu.Nimi} - ");
+                    TulostusMerkkijono.Append($"{solmu.Nimi} - ");
                 }
             }
         }
 
         public override List<string> Tulosta()
         {
-            Tuloste.Add(sb.ToString());
+            Tuloste.Add(TulostusMerkkijono.ToString());
             return Tuloste;
         }
 
@@ -47,14 +47,14 @@ namespace Demo.ReitinhaunLuokat
 
             käsiteltäväSolmu.Vierailtu = true;
 
-            sb.Append($"{käsiteltäväSolmu.Nimi} - ");
+            TulostusMerkkijono.Append($"{käsiteltäväSolmu.Nimi} - ");
 
             foreach (Kaari kaari in käsiteltäväSolmu.Kaaret)
             {
                 if ((kaari.Paino > 0) && (Solmulista[kaari.Loppu].Vierailtu == false))
                 {
                     TeeSyvyysHaku(kaari);
-                    sb.Append($"{käsiteltäväSolmu.Nimi} - ");
+                    TulostusMerkkijono.Append($"{käsiteltäväSolmu.Nimi} - ");
                 }
             }
         }
