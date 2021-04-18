@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Demo.ReitinhaunLuokat
@@ -32,10 +33,14 @@ namespace Demo.ReitinhaunLuokat
         {
             int seuraavaIndeksi;
             int käsiteltäväIndeksi;
+            StringBuilder sb = new();
+
             while (Solmujono.Count > 0)
             {
                 käsiteltäväIndeksi = Solmujono.Dequeue();
                 Solmu solmu = Solmulista[käsiteltäväIndeksi];
+
+                if (RunsasTulostus) sb.Append("${solmu.Nimi} -> ");
 
                 // tarkistetaan onko saavuttu jo perille
                 if (käsiteltäväIndeksi == Solmusetti[LoppuSolmu])
@@ -43,6 +48,12 @@ namespace Demo.ReitinhaunLuokat
                     // Eli perillä ollaan. Terminoidaan haku.
                     HakuTullutValmiiksi = true;
                     Solmujono.Clear();
+
+                    if (RunsasTulostus)
+                    {
+                        Tuloste.Add(sb.ToString());
+                    }
+
                     return;
                 }
                 // käydään läpi kaaret ja uudet solmut

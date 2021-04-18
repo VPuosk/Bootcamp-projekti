@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Demo.ReitinhaunLuokat
 {
     public class Syvyyshaku : Hakumenetelmä, IHaku
     {
+        public StringBuilder sb { get; set; }
+
         public Syvyyshaku()
         {
             AlustaHakuYleisesti();
+            sb = new();
         }
 
         public override void Suorita()
@@ -18,6 +22,8 @@ namespace Demo.ReitinhaunLuokat
             solmu.Vierailtu = true;
             solmu.Edeltäjä = null;
             solmu.KokonaisPaino = 0;
+            sb.Clear();
+            sb.Append($"{solmu.Nimi} -> ");
             foreach (Kaari kaari in solmu.Kaaret)
             {
                 if (kaari.Paino > 0) TeeSyvyysHaku(kaari);
@@ -47,6 +53,8 @@ namespace Demo.ReitinhaunLuokat
             käsiteltäväSolmu.Vierailtu = true;
             käsiteltäväSolmu.Edeltäjä = tuloKaari;
 
+            if (RunsasTulostus) sb.Append($"{käsiteltäväSolmu.Nimi} -> ");
+
             // tallennetaan solmun paino
             käsiteltäväSolmu.KokonaisPaino = Solmulista[tuloKaari.Alku].KokonaisPaino + tuloKaari.Paino;
 
@@ -54,6 +62,12 @@ namespace Demo.ReitinhaunLuokat
             {
                 // saavutettu lopetussolmu, lopetetaan haku
                 HakuTullutValmiiksi = true;
+
+                if (RunsasTulostus)
+                {
+                    Tuloste.Add(sb.ToString());
+                }
+                return;
             }
 
             foreach (Kaari kaari in käsiteltäväSolmu.Kaaret)

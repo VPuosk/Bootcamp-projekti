@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Demo.ReitinhaunLuokat
@@ -29,6 +30,9 @@ namespace Demo.ReitinhaunLuokat
         {
             int nykyEtäisyys;
             int uusiEtäisyys;
+            
+            StringBuilder sb = new();
+
             while (HakuKeko.Koko() > 0)
             {
                 int[] tiedot = HakuKeko.OtaArvo();
@@ -45,6 +49,8 @@ namespace Demo.ReitinhaunLuokat
                 if (solmu.Vierailtu) continue;
 
                 //System.Console.WriteLine(solmu);
+                // kirjataan lisäteksti osuuteen, että tässä solmussa on nyt käyty:
+                if (RunsasTulostus) sb.Append($"{solmu.Nimi} -> ");
 
                 // nyt täällä on käyty
                 solmu.Vierailtu = true;
@@ -70,7 +76,12 @@ namespace Demo.ReitinhaunLuokat
                         // System.Console.WriteLine(HakuKeko.ToString());
                     }
                 }
+            }
 
+            // jos halutaan lisää infoa 
+            if (RunsasTulostus)
+            {
+                Tuloste.Add(sb.ToString());
             }
         }
 
