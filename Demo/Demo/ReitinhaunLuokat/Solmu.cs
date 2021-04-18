@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Models
+namespace Demo.ReitinhaunLuokat
 {
     public class Solmu
     {
@@ -23,13 +23,13 @@ namespace Demo.Models
         {
             Kaaret = new();
             Nimi = nimi;
-            KokonaisPaino = Int32.MaxValue;
+            KokonaisPaino = int.MaxValue;
             Vierailtu = false;
         }
 
         public void LisääKaari(Kaari kaari)
         {
-            this.Kaaret.Add(kaari);
+            Kaaret.Add(kaari);
         }
 
         public override string ToString()

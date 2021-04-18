@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Models
+namespace Demo.ReitinhaunLuokat
 {
     public class Keko
     {
@@ -145,7 +145,7 @@ namespace Demo.Models
 
         public void JärjestäKekoYlhäältä(int indeksi)
         {
-            int ensimmäinen = (indeksi * 2);
+            int ensimmäinen = indeksi * 2;
             int toinen = ensimmäinen + 1;
 
             // kumpikaan solmuista ei ole enään keossa

@@ -1,4 +1,5 @@
-﻿using Demo.Models;
+﻿using Demo.ReitinhaunLuokat;
+using Demo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace Demo.Controllers
 
         //POST
         [HttpPost]
-        public IActionResult Laskuri(Models.Arvopari arvopari)
+        public IActionResult Laskuri(Arvopari arvopari)
         {
             ViewData["laskuri"] = arvopari.Laske();
             return View();
@@ -59,7 +60,7 @@ namespace Demo.Controllers
         [HttpPost]
         public IActionResult Rivilaskuri(string syöte)
         {
-            Models.Rivilaskuri rivilaskuri = new();
+            Rivilaskuri rivilaskuri = new();
             Console.WriteLine(syöte);
             rivilaskuri.Jono = syöte;
             TempData["rivilasku"] = rivilaskuri.LaskeMerkkiJono();

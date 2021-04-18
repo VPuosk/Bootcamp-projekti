@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Models
+namespace Demo.ReitinhaunLuokat
 {
     enum Hakutyyppi
     {
@@ -119,7 +119,7 @@ namespace Demo.Models
             for (int i = tulosteLista.Count - 1; i >= 0; i--)
             {
                 tuloste.Append(tulosteLista[i].Nimi);
-                
+
                 if (i > 0)
                 {
                     tuloste.Append(" -> \n");

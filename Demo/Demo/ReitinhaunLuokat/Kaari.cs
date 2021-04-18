@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Demo.Models
+namespace Demo.ReitinhaunLuokat
 {
     public class Kaari
     {
@@ -39,7 +39,7 @@ namespace Demo.Models
 
         public void AsetaVastaKaari(Kaari vastaKaari)
         {
-            this.VastaKaari = vastaKaari;
+            VastaKaari = vastaKaari;
         }
 
         public override string ToString()

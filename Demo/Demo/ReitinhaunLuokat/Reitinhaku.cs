@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Demo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Demo.Models
+namespace Demo.ReitinhaunLuokat
 {
     public class Reitinhaku
     {
@@ -41,14 +42,14 @@ namespace Demo.Models
                 {
                     string alku = tiedot[0];
                     string loppu = tiedot[1];
-                    int paino = Int32.Parse(tiedot[2]);
+                    int paino = int.Parse(tiedot[2]);
 
                     // lisätään (tarvittaessa) solmut
                     HakuMenetelmä.LisääUusiSolmu(alku);
                     HakuMenetelmä.LisääUusiSolmu(loppu);
 
                     // lisätään itse kaari
-                    HakuMenetelmä.LisääUusiKaari(alku, loppu, paino, (int) tyyppi);
+                    HakuMenetelmä.LisääUusiKaari(alku, loppu, paino, (int)tyyppi);
                 }
                 catch (Exception)
                 {
@@ -100,7 +101,7 @@ namespace Demo.Models
             }
 
             // varmistetaan ettei hakua voi tapahtua ilman loppusolmua
-            if ((toiminto == "rakenne") && (loppu == ""))
+            if (toiminto == "rakenne" && loppu == "")
             {
                 Palautus.Add("Virheellinen tieto syötetty. Loppupiste on määritettävä.");
                 return Palautus;
@@ -136,7 +137,7 @@ namespace Demo.Models
 
             // jos virheitä on havaittu, lopeta suoritus.
             if (Palautus.Count != 0) return Palautus;
-                
+
             HakuMenetelmä.Suorita();
 
             // palautetaan pyydetty tietokenttä

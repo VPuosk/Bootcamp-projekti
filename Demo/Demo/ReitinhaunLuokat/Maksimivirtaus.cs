@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo.Models
+namespace Demo.ReitinhaunLuokat
 {
     public class Maksimivirtaus : Hakumenetelmä, IHaku
     {
@@ -93,7 +93,7 @@ namespace Demo.Models
         public int EtsiPieninVirtausReitillä()
         {
             Solmu solmu = Solmulista[Solmusetti[LoppuSolmu]];
-            int alhaisinVirtaus = Int32.MaxValue;
+            int alhaisinVirtaus = int.MaxValue;
 
             while (solmu.Edeltäjä != null)
             {
@@ -147,7 +147,7 @@ namespace Demo.Models
                 // arvo alustetaan int32.maxvalue:n arvoon,
                 // joten jos tuo palautetaan voidaan olettaa, että
                 // haku ei onnistunut ja uutta kierrosta ei enää tarvita
-                if (uusiVirtaus == Int32.MaxValue)
+                if (uusiVirtaus == int.MaxValue)
                 {
                     break;
                 }
