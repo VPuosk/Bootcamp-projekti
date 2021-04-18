@@ -79,6 +79,7 @@ namespace Demo.ReitinhaunLuokat
                     HakuMenetelmä = new Maksimivirtaus();
                     break;
                 case "rakenne":
+                    HakuMenetelmä = new Rakennehaku();
                     break;
                 default:
                     // tämä loppui sitten tähän
