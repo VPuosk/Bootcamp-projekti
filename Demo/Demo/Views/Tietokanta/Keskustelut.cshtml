@@ -4,7 +4,7 @@
     ViewData["Title"] = "Keskustelut";
 }
 
-<div class="container">
+<div class="container m-4">
     <h4>Olemassa olevat keskustelut</h4>
     <hr />
     <div class="row">
@@ -30,20 +30,18 @@
 
 <div class="container">
     <form action="/Tietokanta/Keskustelut" method="post">
-        <div class="form-horizontal">
-            <h4>Lisää uusi keskustelu</h4>
-            <hr />
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Nimi" />
-                <div class="col-md-10">
-                    <input class="form-control" type="text" id="Nimi" name="Nimi" />
-                    <span class="text-danger field-validation-valid" data-valmsg-for="Nimi" data-valmsg-replace="true"></span>
-                </div>
+        <h4>Lisää uusi keskustelu</h4>
+        <hr />
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Nimi">Nimi:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="Nimi" name="Nimi" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Nimi" data-valmsg-replace="true"></span>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </form>
