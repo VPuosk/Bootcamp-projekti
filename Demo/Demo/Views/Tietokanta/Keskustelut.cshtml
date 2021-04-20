@@ -1,8 +1,50 @@
-﻿@{
-    ViewData["Title"] = "Aloitussivu";
+﻿@model  IEnumerable<Demo.Models.Keskustelu>
+
+@{
+    ViewData["Title"] = "Keskustelut";
 }
 
-<div id="listanpaikka">
-
+<div class="container">
+    <h4>Olemassa olevat keskustelut</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm">
+            Keskustelun aihe
+        </div>
+        <div class="col-sm">
+            Keskustelu aloitettu
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-sm">
+                <a href="/Tietokanta/Keskustelu/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.Nimi)</a>
+            </div>
+            <div class="col-sm">
+                @Html.DisplayFor(modelItem => item.Luotu)
+            </div>
+        </div>
+    }
 </div>
-<script src="~/js/Reseptit.js"></script>
+
+<div class="container">
+    <form action="/Tietokanta/Keskustelut" method="post">
+        <div class="form-horizontal">
+            <h4>Lisää uusi keskustelu</h4>
+            <hr />
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Nimi" />
+                <div class="col-md-10">
+                    <input class="form-control" type="text" id="Nimi" name="Nimi" />
+                    <span class="text-danger field-validation-valid" data-valmsg-for="Nimi" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

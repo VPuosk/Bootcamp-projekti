@@ -55,9 +55,22 @@ namespace Demo.Controllers
             return View(keskustelut.ToList());
         }
 
+        [HttpPost]
+        [Route("Keskustelut")]
+        public IActionResult LisääKeskustelu([Bind("Nimi")] Keskustelu keskustelu)
+        {
+            DemoprojektiContext konteksti = new();
+            int keskusteluidenMäärä = konteksti.Keskustelus.Count();
+            keskustelu.Id = keskusteluidenMäärä;
+            keskustelu.Luotu = DateTime.Now;
+            konteksti.Keskustelus.Add(keskustelu);
+            konteksti.SaveChanges();
+            return RedirectToAction("Keskustelut", "Tietokanta");
+        }
+
         [HttpGet]
         [Route("Keskustelu/{id}")]
-        public IActionResult Keskustelut(int? id)
+        public IActionResult Keskustelu(int? id)
         {
             // testataan onko oikea
             if (id == null)
@@ -73,7 +86,22 @@ namespace Demo.Controllers
             {
                 return RedirectToAction("Keskustelut", "Tietokanta");
             }
+            ViewData["keskusteluID"] = id.ToString();
             return View(kommentit.ToList());
+        }
+
+        [HttpPost]
+        [Route("Keskustelu/{id}")]
+        public IActionResult LisääKommentti(int id, [Bind("Otsikko", "Tekija", "Teksti")] Kommentti kommentti)
+        {
+            DemoprojektiContext konteksti = new();
+            kommentti.Keskustelu = id;
+            int kommenttienMäärä = konteksti.Kommenttis.Count();
+            kommentti.Id = kommenttienMäärä;
+            kommentti.Luotu = DateTime.Now;
+            konteksti.Kommenttis.Add(kommentti);
+            konteksti.SaveChanges();
+            return RedirectToAction("Keskustelu", "Tietokanta", new { id });
         }
 
         [HttpPost]
