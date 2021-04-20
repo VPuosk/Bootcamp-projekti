@@ -1,5 +1,5 @@
 ﻿const userAction = async () => {
-    const vastaus = await fetch('https://localhost:44358/TietokantaAPI/Reseptit');
+    const vastaus = await fetch('/TietokantaAPI/Reseptit');
     const json = await vastaus.json();
     var paikka = document.getElementById("listanpaikka");
     /*
@@ -22,21 +22,27 @@
     ryhmittely.classList.add('container','border','border-primary');
     paikka.appendChild(ryhmittely);
     for (var i = 0; i < json.length; i++) {
+
+        // luodaan rivielementti (Boostrap) ja liitetään se ryhmittely elementtiin
         let rivi = document.createElement('div');
-        rivi.classList.add('row');
+        rivi.classList.add('row', 'm-2', 'p-2');
         ryhmittely.appendChild(rivi);
+
+        // luodaan ensimmäinen sarake elementti ja liitetään se rivi elementtiin
         let sarake = document.createElement('div');
         sarake.classList.add('col-sm-9');
         rivi.appendChild(sarake);
+
+        // täytetään ensimmäiseen sarakkeeseen menevä linkkitieto ja elementin id tieto (josko tarpeen)
+        // täytetään myös varsinainen innerHTML kenttä.
         let linkki = document.createElement('a');
         sarake.appendChild(linkki);
         linkki.id += "Resepti" + json[i].id;
-        console.log(window.location.hostname);
-        console.log(window.location.port);
-        console.log(linkki.href);
-        linkki.href += "https://" + window.location.hostname + ":" + window.location.port + "/Tietokanta/Resepti/" + json[i].id;
+        linkki.href += "/Tietokanta/Resepti/" + json[i].id;
         linkki.innerHTML += json[i].nimi;
         //console.log(json[i].id)
+
+        // luodaan toinen sarake elementti ja liitetään se rivi elementtiin
         let aikasarake = document.createElement('div');
         aikasarake.classList.add('col-sm-3');
         rivi.appendChild(aikasarake);
@@ -44,11 +50,4 @@
     }
 }
 
-console.log("polku" + window.location.pathname);
-
-function testi() {
-    var palat = window.location.pathname.split('/');
-    console.log(palat[palat.length-1]);
-}
-testi();
 userAction();

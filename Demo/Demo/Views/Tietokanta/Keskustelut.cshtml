@@ -7,42 +7,46 @@
 <div class="container m-4">
     <h4>Olemassa olevat keskustelut</h4>
     <hr />
-    <div class="row">
-        <div class="col-sm">
-            Keskustelun aihe
-        </div>
-        <div class="col-sm">
-            Keskustelu aloitettu
+    <div class="border border-primary m-2 p-2" style="background-color: rgba(240, 240, 255, 0.95);">
+        <div class="row">
+            <div class="col-sm">
+                Keskustelun aihe
+            </div>
+            <div class="col-sm">
+                Keskustelu aloitettu
+            </div>
         </div>
     </div>
     @foreach (var item in Model)
     {
-        <div class="row">
-            <div class="col-sm">
-                <a href="/Tietokanta/Keskustelu/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.Nimi)</a>
-            </div>
-            <div class="col-sm">
-                @Html.DisplayFor(modelItem => item.Luotu)
+        <div class="border border-primary m-2 p-2" style="background-color: rgba(225, 225, 255, .75);">
+            <div class="row">
+                <div class="col-sm">
+                    <a href="/Tietokanta/Keskustelu/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.Nimi)</a>
+                </div>
+                <div class="col-sm">
+                    @Html.DisplayFor(modelItem => item.Luotu)
+                </div>
             </div>
         </div>
-    }
+     }
 </div>
 
-<div class="container">
-    <form action="/Tietokanta/Keskustelut" method="post">
-        <h4>Lisää uusi keskustelu</h4>
-        <hr />
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label" for="Nimi">Nimi:</label>
-            <div class="col-sm-10">
-                <input class="form-control" type="text" id="Nimi" name="Nimi" />
-                <span class="text-danger field-validation-valid" data-valmsg-for="Nimi" data-valmsg-replace="true"></span>
-            </div>
+        <div class="container">
+            <form action="/Tietokanta/Keskustelut" method="post">
+                <h4>Lisää uusi keskustelu</h4>
+                <hr />
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="Nimi">Nimi:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" id="Nimi" name="Nimi" />
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Nimi" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-offset-2 col-sm-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </div>
-    </form>
-</div>

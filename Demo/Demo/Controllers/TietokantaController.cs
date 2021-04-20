@@ -80,7 +80,7 @@ namespace Demo.Controllers
 
             DemoprojektiContext konteksti = new();
 
-            IQueryable<Kommentti> kommentit = konteksti.Kommenttis.Where(k => k.Keskustelu == id);
+            IQueryable<Kommentti> kommentit = konteksti.Kommenttis.Where(k => k.Keskustelu == id).OrderBy(v => v.Luotu);
 
             if (kommentit == null)
             {

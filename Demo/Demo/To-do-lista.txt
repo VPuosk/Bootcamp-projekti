@@ -1,0 +1,7 @@
+﻿Mitä vielä tulisi tehdä:
+
+1. Järjestää kunnolla toimiva Bootstrap kaikkiin tiedostoihin (ja ottaa tuo uusi form käyttöön)
+2. Varmistaa että tietokannat toimivat
+3. Lisätä JS kello ohjelma (oma sivu voisi olla ok) - katsoa jos aikaa on johonkin toiseen JS esimerkkiin (jotain animoitua)
+4. Lisätä kuvia Dropbox:in kansioon ja linkittää niitä uuteen pääsivun kuva kansioon
+5. Tarkistaa värisävyt sivuilta

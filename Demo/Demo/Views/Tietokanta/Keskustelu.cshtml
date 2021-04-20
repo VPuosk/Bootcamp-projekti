@@ -10,7 +10,7 @@
     <hr />
     @foreach (var item in Model)
     {
-        <div class="border border-primary">
+        <div class="border border-primary m-2 p-2" style="background-color: rgba(230, 230, 255, 0.8);">
             <div class="row">
                 <div class="col-sm">
                     @Html.DisplayFor(modelItem => item.Otsikko)
@@ -33,34 +33,32 @@
 
 <div class="container">
     <form action="/Tietokanta/Keskustelu/@ViewData["keskusteluID"]" method="post">
-        <div class="form-horizontal">
-            <h4>Lisää uusi kommentti</h4>
-            <hr />
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Otsikko" />
-                <div class="col-md-10">
-                    <input class="form-control" type="text" id="Otsikko" name="Otsikko" />
-                    <span class="text-danger field-validation-valid" data-valmsg-for="Otsikko" data-valmsg-replace="true"></span>
-                </div>
+        <h4>Lisää uusi kommentti</h4>
+        <hr />
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Otsikko">Otsikko:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="Otsikko" name="Otsikko" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Otsikko" data-valmsg-replace="true"></span>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Tekija" />
-                <div class="col-md-10">
-                    <input class="form-control" type="text" id="Tekija" name="Tekija" />
-                    <span class="text-danger field-validation-valid" data-valmsg-for="Tekija" data-valmsg-replace="true"></span>
-                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Tekija">Tekijä:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" id="Tekija" name="Tekija" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="Tekija" data-valmsg-replace="true"></span>
             </div>
-            <div class="form-group">
-                <label class="control-label col-md-2" for="Teksti" />
-                <div class="col-md-10">
-                    <textarea class="form-control" type="text" id="Teksti" name="Teksti"></textarea>
-                    <span class="text-danger field-validation-valid" data-valmsg-for="Teksti" data-valmsg-replace="true"></span>
-                </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label" for="Teksti">Teksti:</label>
+            <div class="col-sm-10">
+                <textarea class="form-control" type="text" id="Teksti" name="Teksti"></textarea>
+                <span class="text-danger field-validation-valid" data-valmsg-for="Teksti" data-valmsg-replace="true"></span>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </form>
