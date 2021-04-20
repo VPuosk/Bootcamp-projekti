@@ -1,0 +1,20 @@
+﻿@model Demo.Models.Resepti
+
+@{
+    ViewData["Title"] = "Aloitussivu";
+}
+
+<div class="container">
+    <div>
+        @Html.DisplayNameFor(model => model.Nimi);
+    </div>
+    <div>
+        @Html.DisplayFor(model => model.Nimi);
+    </div>
+    <div>
+        @Html.DisplayNameFor(model => model.Ohje);
+    </div>
+    <div>
+        @Html.DisplayFor(model => model.Ohje);
+    </div>
+</div>

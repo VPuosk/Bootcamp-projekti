@@ -53,6 +53,12 @@
                 <a asp-area="" asp-controller="Demo" asp-action="Laskuri">Laskimia</a>
                 <a asp-area="" asp-controller="Demo" asp-action="Reitinhaku">Reitinhaku</a>
             }
+            else if (kontrollerinNimi == "Tietokanta")
+            {
+                <a asp-area="" asp-controller="Tietokanta" asp-action="Index">Tietokannan etusivu</a>
+                <a asp-area="" asp-controller="Tietokanta" asp-action="Keskustelut">Keskustelut</a>
+                <a asp-area="" asp-controller="Tietokanta" asp-action="Reseptit">Reseptit</a>
+            }
             else
             {
                 // oletusarvona on aloitussivu
