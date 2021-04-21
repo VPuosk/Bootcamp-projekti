@@ -26,6 +26,7 @@ namespace Demo.Models
             Operaattorit = new();
             VirheIlmoitus = "";
             Prioriteetit = new();
+            Prioriteetit.Add("^", 3);
             Prioriteetit.Add("*", 2);
             Prioriteetit.Add("/", 2);
             Prioriteetit.Add("+", 1);
@@ -39,6 +40,7 @@ namespace Demo.Models
         {
             return toiminto switch
             {
+                ("^") => (Math.Pow(ensimmäinenArvo, toinenArvo)),
                 ("*") => (ensimmäinenArvo * toinenArvo),
                 ("/") => (ensimmäinenArvo / toinenArvo),
                 ("+") => (ensimmäinenArvo + toinenArvo),
@@ -73,6 +75,7 @@ namespace Demo.Models
 
                 switch (merkkijono)
                 {
+                    case ("^"):
                     case ("*"):
                     case ("/"):
                     case ("+"):

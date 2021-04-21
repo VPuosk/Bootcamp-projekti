@@ -2,11 +2,26 @@
     ViewData["Title"] = "Demonstraatioita";
 }
 
-<div class="text-center">
+<div class="text-center mt-4" style="font-size:x-large">
     <h1 class="display-4">@ViewData["Title"]</h1>
-    <div>
-        <p><a asp-area="" asp-controller="Demo" asp-action="Laskuri">Laskimia</a></p>
-        <p><a asp-area="" asp-controller="Demo" asp-action="Reitinhaku">Reitinhaku</a></p>
-    </div>    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm m-2 p-2">
+                <a asp-area="" asp-controller="Demo" asp-action="Laskuri">Laskimia</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm m-2 p-2">
+                <a asp-area="" asp-controller="Demo" asp-action="Reitinhaku">Reitinhaku</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm m-2 p-2">
+                <a asp-area="" asp-controller="Demo" asp-action="JavaScript">JavaScript</a>
+            </div>
+        </div>
+    </div>
 </div>
+
+<partial name="_partialDemo" />
 

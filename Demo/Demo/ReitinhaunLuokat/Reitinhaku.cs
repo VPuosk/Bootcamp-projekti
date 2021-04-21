@@ -19,18 +19,28 @@ namespace Demo.ReitinhaunLuokat
 
         private void LueKaariLista(string kaariTiedot, Hakutyyppi tyyppi)
         {
-            // pilkotaan textarea:n syöte riveittäin
-            string[] kaaret = kaariTiedot.Split("\n");
+            // pilkotaan textarea:n syöte riveittäin tai pikkuun (vast) asti
+            char[] katkaisijat = { ',', ';', '.', '\n' };
+            string[] kaaret = kaariTiedot.Split(katkaisijat);
             foreach (string rivi in kaaret)
             {
+
+                // jos tulee täysin tyhjä syöte, niin ohitetaan
+                if (rivi == "")
+                {
+                    continue;
+                }
+
+                // poistetaan mahdolliset rivin alussa ja/tai lopuuss olevat tyhjät merkit
+                string trimmattuRivi = rivi.Trim(' ');
                 // pilkotaan rivit kolmeen komponenttiin
                 // 1. alkusolmu
                 // 2. loppusolmu
                 // 3. paino/virtaus
                 // jos ei onnistu, heitetään pyyhe kehään ja lopetetaan.
-                string[] tiedot = rivi.Split(" ");
+                string[] tiedot = trimmattuRivi.Split(" ");
 
-                // jos annetaan tyhjä rivi, niin oletetaan loppuneeksi.
+                // jos annetaan outoa tai väärää tietoa, niin oletetaan loppuneeksi.
                 if (tiedot.Length != 3)
                 {
                     Palautus.Add($"Virheellinen syöte: {tiedot}");
@@ -72,7 +82,7 @@ namespace Demo.ReitinhaunLuokat
                 case "leveys":
                     HakuMenetelmä = new Leveyshaku();
                     break;
-                case "djikstra":
+                case "dijkstra":
                     HakuMenetelmä = new Djikstra();
                     break;
                 case "maksimivirtaus":

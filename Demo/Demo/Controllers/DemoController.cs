@@ -38,6 +38,12 @@ namespace Demo.Controllers
             return View();
         }
 
+        //GET
+        public IActionResult JavaScript()
+        {
+            return View();
+        }
+
         //POST
         [HttpPost]
         public IActionResult ReitinhaunSyöte(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)

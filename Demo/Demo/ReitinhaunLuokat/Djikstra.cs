@@ -23,10 +23,10 @@ namespace Demo.ReitinhaunLuokat
             HakuKeko.LisääKekoon(indeksi, 0);
             solmu.KokonaisPaino = 0;
             solmu.Edeltäjä = null;
-            TeeDikstranHaku();
+            TeeDijkstranHaku();
         }
 
-        private void TeeDikstranHaku()
+        private void TeeDijkstranHaku()
         {
             int nykyEtäisyys;
             int uusiEtäisyys;

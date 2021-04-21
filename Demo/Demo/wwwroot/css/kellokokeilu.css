@@ -1,0 +1,70 @@
+﻿.kello {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(100, 100, 100, .7);
+    border-radius: 50%;
+    position: relative;
+    border: 2px solid gold;
+}
+
+    .kello .nappula {
+        width: 6%;
+        height: 6%;
+        bottom: 47%;
+        left: 47%;
+        background-color: black;
+        border-radius: 50%;
+        position: absolute;
+        z-index: 100;
+    }
+
+    .kello .viisari {
+        --kierto: 0;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        background-color: gold;
+        border: 5px black;
+        border-radius: 30%;
+        transform-origin: bottom;
+        transform: translateX(-50%) rotate(calc(var(--kierto) * 1deg));
+    }
+
+    .kello .tuntiviisari {
+        width: 8px;
+        height: 20%;
+        z-index: 1;
+    }
+
+    .kello .minuuttiviisari {
+        width: 4px;
+        height: 30%;
+        z-index: 2;
+    }
+
+    .kello .sekunttiviisari {
+        width: 2px;
+        height: 40%;
+        z-index: 10;
+    }
+
+    .kello .tunti {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        color: gold;
+        font-size: xx-large;
+    }
+
+    .kello .tunti3 {
+        transform: rotate(90deg);
+    }
+
+    .kello .tunti6 {
+        transform: rotate(180deg);
+    }
+
+    .kello .tunti9 {
+        transform: rotate(270deg);
+    }

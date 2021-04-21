@@ -68,11 +68,24 @@
 <p>Sallittuja merkkejä ovat kaikki numerot, sekä +, -, * ja /. Desimaalierotin voi olla joko piste tai pilkku. Jokainen numero tai merkki on erotettava välilyönnillä, eli 2 + -123 on OK, mutta 2*2, ei ole.</p>
 
 <form asp-action="Rivilaskuri" asp-controller="Demo">
-    <label for="syöte">Anna laskettava lauseke:</label><br>
-    <input type="text" id="syöte" name="syöte"><br>
-    <input type="submit" />
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="syöte">Anna laskettava lauseke:</label>
+        <div class="col-sm-9">
+            <input class="form-control" type="text" id="syöte" name="syöte" />
+            <span class="text-danger field-validation-valid" data-valmsg-for="syöte" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
 </form>
 
-<p>Tulos: @ViewData["rivilasku"]</p>
+<div class="m-2 p-2"  style="background-color: rgba(200,200,255,0.7);">
+    <p>Tulos: @ViewData["rivilasku"]</p>
+</div>
+
+<partial name="_partialDemo" />
 
 <script src="~/js/Laskutoimitus.js"></script>

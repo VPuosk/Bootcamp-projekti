@@ -5,48 +5,92 @@
 <h1>@ViewData["Title"]</h1>
 <div class="container">
     <form asp-action="ReitinhaunSyöte" asp-controller="Demo">
-        <div>
-            <label for="alku">Alkupisteen nimi tai määrite: </label>
-            <input for="alku" name="alku" placeholder="Alkupiste" required />
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="alku">Alkupisteen nimi tai määrite: </label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" id="alku" name="alku" placeholder="Alkupiste" required />
+                <span class="text-danger field-validation-valid" data-valmsg-for="alku" data-valmsg-replace="true"></span>
+            </div>
         </div>
-        <div>
-            <label for="loppu">Loppupisteen nimi tai määrite: </label>
-            <input for="loppu" name="loppu" placeholder="Loppupiste" />
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="loppu">Loppupisteen nimi tai määrite: </label>
+            <div class="col-sm-3">
+                <input class="form-control" type="text" id="loppu" name="loppu" placeholder="Loppupiste" />
+                <span class="text-danger field-validation-valid" data-valmsg-for="loppu" data-valmsg-replace="true"></span>
+            </div>
         </div>
-        <label for="muoto">Valitse kaari tiedon muoto:</label>
-        <select id="muoto" name="muoto">
-            <option value="oletus">Painottamaton & suuntaamaton</option>
-            <option value="painotettu">Painotettu & suuntaamaton</option>
-            <option value="suunnattu">Painottamaton & suunnattu</option>
-            <option value="molemmat">Painotettu ja suunnattu</option>
-        </select><br />
-        <label for="tulostus">Valitse tulostuksen muoto:</label>
-        <select id="tulostus" name="tulostus">
-            <option value="normaali">Normaali</option>
-            <option value="laajennettu">Laajennettu</option>
-        </select>
-        <p>Ohje: Kaaritiedon tulee olla muodossa: 'alku' 'loppu' 'paino'</p>
-        <p>Esimerkki: Pisteet A ja B yhdistävä painoltaan 5 oleva kaari olisi <pre>A B 5</pre></p>
-        <label for="kaaret">Kaaret:</label>
-        <p>
-            <textarea for="kaaret" name="kaaret" rows="10" >A B 5</textarea>
-        </p>
-        Valitse haun tyyppi:<br>
-        <label>
-            <input type="radio" name="toiminto" value="syvyys" required>    Syvyyshaku
-        </label><br>
-        <label>
-            <input type="radio" name="toiminto" value="leveys">    Leveyshaku
-        </label><br>
-        <label>
-            <input type="radio" name="toiminto" value="djikstra">    Djikstra:n algoritmi
-        </label><br>
-        <label>
-            <input type="radio" name="toiminto" value="maksimivirtaus">    Maksimivirtaus
-        </label><br>
-        <label>
-            <input type="radio" name="toiminto" value="rakenne">    Verkon rakenne
-        </label><br>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="muoto">Valitse kaari tiedon muoto: </label>
+            <div class="col-sm-5">
+                <select id="muoto" name="muoto">
+                    <option selected value="oletus">Painottamaton & suuntaamaton</option>
+                    <option value="painotettu">Painotettu & suuntaamaton</option>
+                    <option value="suunnattu">Painottamaton & suunnattu</option>
+                    <option value="molemmat">Painotettu ja suunnattu</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="tulostus">Valitse tulostuksen muoto: </label>
+            <div class="col-sm-5">
+                <select id="tulostus" name="tulostus">
+                    <option selected value="normaali">Normaali</option>
+                    <option value="laajennettu">Laajennettu</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                Ohje: Kaaritiedon tulee olla muodossa: "alku loppu paino".
+                Esimerkkinä pisteet A ja B yhdistävä painoltaan 5 oleva kaari.<br />
+                Kaaret erotetaan joko pilkulla, pisteellä, puolipisteellä, tai rivinvaihdolla.
+            </div>
+            <div class="col-sm-2">
+                <pre>A B 5</pre>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" for="kaaret">Loppupisteen nimi tai määrite: </label>
+            <div class="col-sm-6">
+                <textarea class="form-control" type="text" id="kaaret" name="kaaret" rows="5">A B 5</textarea>
+                <span class="text-danger field-validation-valid" data-valmsg-for="kaaret" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-3 pt-0">Haun tyyppi:</legend>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="toiminto" id="toiminto1" value="syvyys" checked>
+                    <label class="form-check-label" for="toiminto1">
+                        Syvyyshaku
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="toiminto" id="toiminto2" value="leveys">
+                    <label class="form-check-label" for="toiminto2">
+                        Leveyshaku
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="toiminto" id="toiminto3" value="dijkstra">
+                    <label class="form-check-label" for="toiminto3">
+                        Dijkstra:n algoritmi
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="toiminto" id="toiminto4" value="maksimivirtaus">
+                    <label class="form-check-label" for="toiminto4">
+                        Maksimivirtaus
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="toiminto" id="toiminto5" value="rakenne">
+                    <label class="form-check-label" for="toiminto5">
+                        Verkon rakenne
+                    </label>
+                </div>
+            </div>
+        </fieldset>
         <input type="submit" />
         <input type="reset" />
     </form>
@@ -59,3 +103,5 @@
             }
     </ul>    
 </div>
+
+<partial name="_partialDemo" />
