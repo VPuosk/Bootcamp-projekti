@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Demo.Controllers
 {
+    [Route("Demo")]
     public class DemoController : Controller
     {
 
@@ -17,6 +19,8 @@ namespace Demo.Controllers
         }
 
         //GET
+        [HttpGet]
+        [Route("Laskuri")]
         public IActionResult Laskuri()
         {
             //ViewData["laskuri"] = 20;
@@ -25,6 +29,8 @@ namespace Demo.Controllers
         }
 
         //GET
+        [HttpGet]
+        [Route("Reitinhaku")]
         public IActionResult Reitinhaku()
         {
             //Session
@@ -35,27 +41,37 @@ namespace Demo.Controllers
                 tulostettavaTieto = System.Array.Empty<string>();
             }
             ViewData["Tulos"] = tulostettavaTieto;
+
             return View();
         }
 
         //GET
+        [HttpGet]
+        [Route("JavaScript")]
         public IActionResult JavaScript()
         {
             return View();
         }
 
+        //
         //POST
         [HttpPost]
-        public IActionResult ReitinhaunSyöte(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)
+        [Route("Reitinhaku")]
+        public IActionResult Reitinhaku(string alku, string loppu, string muoto, string tulostus, string kaaret, string toiminto)
         {
             Reitinhaku reitinhaku = new();
             List<string> tulos = reitinhaku.SuoritaHaku(alku, loppu, muoto, tulostus, kaaret, toiminto);
             TempData["ReitinhakuTulos"] = tulos.ToArray();
+            //ViewData["Tulos"] = tulos.ToArray()
+
+            //return View(palautin);
+
             return RedirectToAction("Reitinhaku", "Demo");
         }
 
         //POST
         [HttpPost]
+        [Route("Laskuri")]
         public IActionResult Laskuri(Arvopari arvopari)
         {
             ViewData["laskuri"] = arvopari.Laske();
@@ -64,6 +80,7 @@ namespace Demo.Controllers
 
         //POST
         [HttpPost]
+        [Route("Rivilaskuri")]
         public IActionResult Rivilaskuri(string syöte)
         {
             Rivilaskuri rivilaskuri = new();
