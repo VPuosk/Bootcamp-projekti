@@ -4,17 +4,23 @@
     ViewData["Title"] = "Aloitussivu";
 }
 
-<div class="container">
-    <div>
-        @Html.DisplayNameFor(model => model.Nimi)
+<div class="container" style="font-size:large">
+    <div class="row border border-secondary m-2 p-2">
+        <div class=" col-sm-2">
+            Nimi:
+        </div>
+        <div class="col-sm-10">
+            @Html.DisplayFor(model => model.Nimi)
+        </div>
     </div>
-    <div>
-        @Html.DisplayFor(model => model.Nimi)
-    </div>
-    <div>
-        @Html.DisplayNameFor(model => model.Ohje)
-    </div>
-    <div>
-        @Html.DisplayFor(model => model.Ohje)
+    <div class="row border border-secondary m-2 p-2">
+        <div class=" col-sm-2">
+            Ohje:
+        </div>
+        <div class=" col-sm-10">
+            @Html.DisplayFor(model => model.Ohje)
+        </div>
     </div>
 </div>
+
+<partial name="_partialTietokanta" />

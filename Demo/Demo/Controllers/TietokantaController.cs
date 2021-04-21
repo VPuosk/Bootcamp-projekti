@@ -25,6 +25,19 @@ namespace Demo.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("Reseptit")]
+        public IActionResult LisääResepti([Bind("Nimi","Ohje","Aika")] Resepti resepti)
+        {
+            DemoprojektiContext konteksti = new();
+            int keskusteluidenMäärä = konteksti.Keskustelus.Count();
+            resepti.Id = keskusteluidenMäärä;
+            resepti.Luotu = DateTime.Now;
+            konteksti.Reseptis.Add(resepti);
+            konteksti.SaveChanges();
+            return RedirectToAction("Reseptit", "Tietokanta");
+        }
+
         [HttpGet]
         [Route("Resepti/{id}")]
         public IActionResult Resepti(int? id)
