@@ -19,7 +19,8 @@
     // lähinnä JS ja muuta kokeilua.
     // eli pystynkö kokoamaan sivun tätäkin kautta suoraan API:n kautta ilman MVC puolta.
     let ryhmittely = document.createElement('div');
-    ryhmittely.classList.add('container','border','border-primary');
+    ryhmittely.classList.add('container', 'border', 'border-primary');
+    ryhmittely.style = 'background-color: rgba(240, 240, 255, 0.95);';
     paikka.appendChild(ryhmittely);
     for (var i = 0; i < json.length; i++) {
 
@@ -46,7 +47,11 @@
         let aikasarake = document.createElement('div');
         aikasarake.classList.add('col-sm-3');
         rivi.appendChild(aikasarake);
-        aikasarake.innerHTML = json[i].luotu;
+        var aika = new Date(json[i].luotu);
+        // puretaan aika ja kasataan uudelleen (haluttuun muotoon)
+        aikasarake.innerHTML = aika.toLocaleDateString() + " " + aika.getHours() + "." + aika.getMinutes();
+
+        //2021-04-21T07:26:00
     }
 }
 

@@ -4,6 +4,10 @@
     ViewData["Title"] = "Keskustelun alasivu";
 }
 
+<div class="container text-center  mt-4">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
 
 <div class="container">
     <h4>Kommentit</h4>
@@ -11,7 +15,7 @@
     @foreach (var item in Model)
     {
         <div class="border border-primary m-2 p-2" style="background-color: rgba(230, 230, 255, 0.8);">
-            <div class="row">
+            <div class="row" style="font-weight:900">
                 <div class="col-sm">
                     @Html.DisplayFor(modelItem => item.Otsikko)
                 </div>
@@ -19,7 +23,10 @@
                     @Html.DisplayFor(modelItem => item.Tekija)
                 </div>
                 <div class="col-sm">
-                    @Html.DisplayFor(modelItem => item.Luotu)
+                    @{
+                        string luontiAika = item.Luotu.ToString("d.MM.yyyy h.mm");
+                    }
+                    @luontiAika
                 </div>
             </div>
             <div class="row">

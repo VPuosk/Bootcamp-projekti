@@ -4,11 +4,15 @@
     ViewData["Title"] = "Keskustelut";
 }
 
+<div class="container text-center mt-4">
+    <h1>@ViewData["Title"]</h1>
+</div>
+
 <div class="container m-4">
     <h4>Olemassa olevat keskustelut</h4>
     <hr />
     <div class="border border-primary m-2 p-2" style="background-color: rgba(240, 240, 255, 0.95);">
-        <div class="row">
+        <div class="row" style="font-weight:900">
             <div class="col-sm">
                 Keskustelun aihe
             </div>
@@ -25,7 +29,10 @@
                     <a href="/Tietokanta/Keskustelu/@Html.DisplayFor(modelItem => item.Id)">@Html.DisplayFor(modelItem => item.Nimi)</a>
                 </div>
                 <div class="col-sm">
-                    @Html.DisplayFor(modelItem => item.Luotu)
+                    @{
+                        string luontiAika = item.Luotu.ToString("d.MM.yyyy h.mm");
+                    }
+                    @luontiAika
                 </div>
             </div>
         </div>
