@@ -67,8 +67,10 @@
     </div>
 </div>
 
-<h4>Rivilaskin käyttäen C#</h4>
-<p>Sallittuja merkkejä ovat kaikki numerot, sekä (, ), ^, +, -, * ja /. Desimaalierotin voi olla joko piste tai pilkku. Jokainen numero tai merkki on erotettava välilyönnillä, eli 2 + -123 on OK, mutta 2*2, ei ole.</p>
+<div class="container">
+    <h4>Rivilaskin käyttäen C#</h4>
+    <p>Sallittuja merkkejä ovat kaikki numerot, sekä (, ), ^, +, -, * ja /. Desimaalierotin voi olla joko piste tai pilkku. Jokainen numero tai merkki on erotettava välilyönnillä, eli 2 + -123 on OK, mutta 2*2, ei ole.</p>
+</div>
 
 <form asp-action="Rivilaskuri" asp-controller="Demo">
     <div class="form-group row">
@@ -80,15 +82,20 @@
     </div>
     <div class="form-group row">
         <div class="col-sm-offset-2 col-sm-10">
-            <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="submit" value="Laske" class="btn btn-primary" />
         </div>
     </div>
 </form>
 
-<div class="m-2 p-2"  style="background-color: rgba(200,200,255,0.7);">
-    <p>Tulos: @ViewData["rivilasku"]</p>
+<div class="m-2 p-2" style="background-color: rgba(200,200,255,0.7);">
+    <div class="row">
+        <div class="col-sm-2" style="font-weight:900;">
+            Tulos:
+        </div>
+        <div class="col-sm-2">
+            @ViewData["rivilasku"]
+        </div>
+    </div>
 </div>
-
-<partial name="_partialDemo" />
 
 <script src="~/js/Laskutoimitus.js"></script>

@@ -102,13 +102,18 @@
         <input type="reset" />
     </form>
 </div>
-<div>Tulos:
-    <ul>
-        @foreach (string rivi in tulokset)
-            {
-                <li>@rivi</li>
-            }
-    </ul>    
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-3" style="font-weight:900;">
+            Tulos:
+        </div>
+        <div class="col-sm-6" style="background-color: rgba(200,200,200,0.5);">
+            <ul>
+                @foreach (string rivi in tulokset)
+                {
+                    <li>@rivi</li>
+                }
+            </ul>
+        </div>
+    </div>
 </div>
-
-<partial name="_partialDemo" />

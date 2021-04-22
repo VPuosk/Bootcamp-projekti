@@ -70,7 +70,6 @@
         }
     </div>
     <!-- sivupalkin rendaus ohi -->
-    
     <!-- sivun renderöinti-->
     <div class="container">
         <main role="main" class="pb-3">
@@ -78,6 +77,59 @@
         </main>
     </div>
     <!-- sivun rendaus ohi-->
+    <!-- koitetaan tähän uutta alapalkkisysteemiä -->
+
+    <div class="container mt-5 mb-3 text-center" style="font-size:x-large">
+        <div class="row">
+            @{
+                if (kontrollerinNimi == "Demo")
+                {
+                    <div class="col-sm p-2 m-2" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Demo" asp-action="Index">Koodauksen etusivu</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Demo" asp-action="Laskuri">Laskimia</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Demo" asp-action="Reitinhaku">Reitinhaku</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Demo" asp-action="JavaScript">JavaScript</a>
+                    </div>
+                }
+                else if (kontrollerinNimi == "Tietokanta")
+                {
+                    <div class="col-sm p-2 m-2" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Tietokanta" asp-action="Index">Tietokannan etusivu</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Tietokanta" asp-action="Keskustelut">Keskustelut</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Tietokanta" asp-action="Reseptit">Reseptit</a>
+                    </div>
+                }
+                else
+                {
+                    // oletusarvona on aloitussivu
+                    <div class="col-sm p-2 m-2" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Etusivu</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Home" asp-action="CVsivu">Curriculum Vitae</a>
+                    </div>
+                    <div class="col-sm p-2 m-2 text-center" style="border: 1px solid black; background-color: rgba(230,230,255,0.8);">
+                        <a asp-area="" asp-controller="Home" asp-action="Luonto">Luontokuvia</a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    
+
+
+
+    <!-- koitetaan tähän uutta alapalkkisysteemiä -->
 
     <footer class="border-top footer text-muted">
         <div class="container">
