@@ -2,18 +2,6 @@
     const vastaus = await fetch('/TietokantaAPI/Reseptit');
     const json = await vastaus.json();
     var paikka = document.getElementById("listanpaikka");
-    /*
-    
-    ul = document.createElement('ul');
-    paikka.appendChild(ul);
-    for (var i = 0; i < json.length; i++) {
-        let li = document.createElement('li');
-        ul.appendChild(li);
-        li.id += "Resepti" + json[i].id;
-        li.innerHTML += json[i].name;
-        console.log(json[i].id)
-    }
-    */
 
     // eli tehdään tästä Bootstrap tyyppinen taulukko lennossa
     // lähinnä JS ja muuta kokeilua.
