@@ -15,6 +15,7 @@
         // luodaan rivielementti (Boostrap) ja liitetään se ryhmittely elementtiin
         let rivi = document.createElement('div');
         rivi.classList.add('row', 'm-2', 'p-2');
+        rivi.style = 'background-color: rgba(100, 100, 255, 0.2);';
         ryhmittely.appendChild(rivi);
 
         // luodaan ensimmäinen sarake elementti ja liitetään se rivi elementtiin
